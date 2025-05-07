@@ -13,8 +13,19 @@ Após rodar o script e antes de emular o qemu, certifique-se que as variáveis d
 que o caminho para o bin foi adicionado ao `PATH` para possibilitar o uso do comando
 `qemu-system-i386`.
 
-O driver possibilita o envio e leitura de mensagens entre n aplicações. As operações definidas
-são:
+Para inicializar o driver dentro do qemu devemos  executar o comando:
+
+    modprobe mq_driver n_msg=A max_msg_len=B
+
+onde A e B são núemros que representama quantidade máxima de mensagens na fila circular
+e o tamanho máximo de bytes nas mensagens.
+
+Para parar o driver, o comando a ser executado é:
+
+    rmmod mq_driver
+
+O driver possibilita o envio e leitura de mensagens entre n aplicações. As operações 
+definidas são:
 
     1. /reg <name>
 
